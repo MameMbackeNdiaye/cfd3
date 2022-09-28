@@ -19,10 +19,16 @@ class RoleController extends Controller
      */
     public function index()
     {
+        /*
         return Inertia::render('Admin/Roles/Index',[
             'roles' => Role::all(),
             'users'=> User::all()
         ]);
+        */
+        $roles = Role::all();
+        $users = User::all();
+        return view('admin.role', ['roles' => $roles, 'users' => $users]);
+
     }
 
     /**
@@ -73,9 +79,15 @@ class RoleController extends Controller
      */
     public function edit($id)
     {
+        /*
         return Inertia::render('Admin/Roles/Edit', [
             'role' => Role::findOrFail($id)
-        ]);   
+        ]); 
+        */
+        $roles = Role::findOrFail($id);
+        
+        return view('admin.role.edit')
+            ->with('roles',$roles);
     }
 
     /**
@@ -85,14 +97,25 @@ class RoleController extends Controller
      * @param  \App\Models\Roles  $roles
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request ,Role $rol)
+    public function update(Request $request, $id)
     {
+
+        $roles = Role::findOrFail($id);
+        $roles->nom = $request->input('nom');
+        $roles->update();
+
+        return redirect('/admin/roles')->with('status','La mise a jour a ete effectué avec succès');
+        
+        
+        
+        /*
         $validated = $request->validate([ 'nom' => 'required' ]);
         /*
         Validator::make($request->all(), [
             'nom'=>'required',
         ]);
         */
+        /*
         if(isset($_GET['id'])){
             error_log($_GET['id']);
         }
@@ -104,7 +127,7 @@ class RoleController extends Controller
         $r = $rol->update($validated);
         $result = $r?"ok":"ko";
         error_log($result." =================================================".explode('/',$request->path())[3]);
-
+*/
         /*
         Validator::make($input, [
             'nom' => ['required'],
@@ -124,7 +147,7 @@ class RoleController extends Controller
         $result = $r?"ok":"ko";
         error_log($result." =================================================");
         */
-        return back();
+    
     }
     /**
      * Remove the specified resource from storage.
@@ -139,5 +162,23 @@ class RoleController extends Controller
         return redirect()->back()
             ->with('message', 'Role deleted successfully.');
     }
+    public function registeredit(Request $request , $id){
+
+        $users = User::findOrFail($id);
+        $roles = Role::all();
+        return view('admin.register-edit',['roles' => $roles])->with('users',$users);
+    }
+
+    public function registerupdate(Request $request, $id){
+
+        $users = User::find($id);
+        $users->name = $request->input('username');
+        $users->email = $request->input('email');
+        $users->role_id = $request->input('userType');
+        $users->update();
+
+        return redirect('/admin/roles')->with('status','La mise a jour a ete effectué avec succès');
+    }
+
 }
 

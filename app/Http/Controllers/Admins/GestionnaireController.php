@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers\Admins;
 
+use App\Actions\Fortify\PasswordValidationRules;
 use Laravel\Fortify\Contracts\UpdatesUserProfileInformation;
 
 use App\Http\Controllers\Controller;
+use App\Models\Role;
 use App\Models\User;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Http\Request;
@@ -16,6 +18,7 @@ use Inertia\Inertia;
 use Laravel\Fortify\Rules\Password as RulesPassword;
 use Laravel\Jetstream\Jetstream;
 
+
 class GestionnaireController extends Controller
 {
         /**
@@ -25,10 +28,17 @@ class GestionnaireController extends Controller
      */
     public function index()
     {
+        /*
         $usersList = User::all();
         return Inertia::render('Admin/Gestionnaires/Index',[
             'users'=> $usersList
         ]);
+        /*
+        $user= User::cursorPaginate(5);
+        return view('admin.Gestionnaires.List', ['users' => $user]);
+            */
+            $users = User::all();
+            return view('admin.register', ['users' => $users]);
     }
 
     /**
@@ -38,37 +48,42 @@ class GestionnaireController extends Controller
      */
     public function create()
     {
-        return Inertia::render('Admin/Gestionnaires/Create');
-
+        //return Inertia::render('Admin/Gestionnaires/Create');
+        
+        $users = User::all();
+        $roles = Role::all();
+        return view('admin.gestionnaires.add', ['users' => $users,'roles' => $roles]);
+        
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Validate and create a newly registered user.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param  array  $input
+     * @return \App\Models\User
      */
-    public function store(Request $request)
+    public function store(array $input)
     {
-        Validator::make($request->all(), [
+        Validator::make($input, 
+        [
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => [ 'required', 'string', new Password, 'confirmed'],
             'terms' => Jetstream::hasTermsAndPrivacyPolicyFeature() ? ['accepted', 'required'] : '',
         ])->validate();
+        //error_log($result." =================================================");
   
-        return User::create([
-            'name' => $request['name'],
-            'email' => $request['email'],
-            'role_id' => $request['role_id'],
-            'role'=> $request['role'],
-            'is_admin' => $request[value('is_admin', 1)],
-            'password' => Hash::make($request['password'])
+            return  User::create([
+            'name' => $input['name'],
+            'email' => $input['email'],
+            'role_id' => $input['role_id'],
+            'role'=> $input['role'],
+            'is_admin' => $input[value('is_admin', 1)],
+            'password' => Hash::make($input['password'])
         ]);
   
   
-        return redirect()->back()
-                    ->with('message', 'User Created Successfully.');   
+        return redirect('/admin/gestionnaires')->with('status',"L'ajout a ete effectué avec succès");
     }
 
     /**
@@ -152,6 +167,53 @@ class GestionnaireController extends Controller
     public function destroy(User $roles)
     {
         //
+    }
+    /**
+     * Create a new user instance after a valid registration.
+     *
+     * @param  array  $data
+     * @return \App\Models\User
+     */
+    public function addUser(array $data,Request $request)
+    {
+        Validator::make(
+        [
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'password' => [ 'required', 'string', new Password, 'confirmed'],
+            'terms' => Jetstream::hasTermsAndPrivacyPolicyFeature() ? ['accepted', 'required'] : '',
+        ],$data)->validate();
+        //error_log($result." =================================================");
+  
+            User::create([
+            'name' => $data['name'],
+            'email' => $data['email'],
+            'role_id' => $data['role_id'],
+            'role'=> $data['role'],
+            'is_admin' => $data[value('is_admin', 1)],
+            'password' => Hash::make($data['password'])
+        ]);
+  
+  
+        return redirect('/admin/gestionnaires')->with('status',"L'ajout a ete effectué avec succès");
+    }
+
+    public function editstatus($id)
+    {
+        $users = User::findOrFail($id);
+        return view('admin.gestionnaires.status-edit',['users' => $users]);
+
+    }
+
+    public function updatestatus(Request $request, $id)
+    {
+        $users = User::find($id);
+        $users->status = $request->input('status');
+        $users->update();
+
+        return redirect('/admin/gestionnaires')->with('status','La mise a jour a ete effectué avec succès');
+
+
     }
 
 }

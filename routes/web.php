@@ -36,25 +36,6 @@ Route::get('/addProject/addProjectForm', 'App\Http\Controllers\ProjetController@
 
 
 
-Route::middleware([
-    'auth:sanctum',
-    config('jetstream.auth_session'),
-    'verified',
-])->group(function () {
-    Route::get('/dashboard', function () {
-        return Inertia::render('Dashboard');
-    })->name('dashboard');
-    
-    Route::get("/redirectAuthenticatedUsers", [App\Http\Controllers\Auth\RedirectAuthenticatedUsersController::class, "home"]);
-
-    Route::group(['middleware' => 'checkRole:1'], function() {
-        Route::inertia('/Admin/Dashboard', 'Admin/Dashboard')->name('adminDashboard');
-    });
-    Route::group(['middleware' => 'checkRole:0'], function() {
-        Route::inertia('/Dashboard', 'Dashboard')->name('Dashboard');
-    });
-});
-
 Route::group([
     'auth:sanctum',
     config('jetstream.auth_session'),
@@ -72,21 +53,46 @@ Route::prefix('admin')->middleware(['auth:sanctum','verified'])->name('admin.')-
         Route::get('/',[App\Http\Controllers\Admins\RoleController::class,'index'])->name('index');
         Route::post('/store',[App\Http\Controllers\Admins\RoleController::class,'store'])->name('store');
         Route::get('/edit/{id}',[App\Http\Controllers\Admins\RoleController::class,'edit'])->name('edit'); 
-        Route::put('/update',[App\Http\Controllers\Admins\RoleController::class,'update'])->name('update');
+        Route::put('/update/{id}',[App\Http\Controllers\Admins\RoleController::class,'update'])->name('update');
         Route::delete('/delete/{id}',[App\Http\Controllers\Admins\RoleController::class, 'destroy'])->name('destroy');
+        Route::get('/role-edit/{id}',[App\Http\Controllers\Admins\RoleController::class,'registeredit'])->name('registeredit');
+        Route::put('/role-register-update/{id}',[App\Http\Controllers\Admins\RoleController::class,'registerupdate'])->name('registerupdate');
+            
     });
     Route::prefix('gestionnaires')->name('gestionnaires.')->group(function(){
         Route::get('/',[App\Http\Controllers\Admins\GestionnaireController::class,'index'])->name('index');
         Route::get('/create',[App\Http\Controllers\Admins\GestionnaireController::class,'create'])->name('create');
+        Route::post('/addUser',[App\Http\Controllers\Admins\GestionnaireController::class,'adduser'])->name('adduser');
         Route::post('/store',[App\Http\Controllers\Admins\GestionnaireController::class,'store'])->name('store');
         Route::get('/edit/{id}',[App\Http\Controllers\Admins\GestionnaireController::class,'edit'])->name('edit');
         Route::put('/update',[App\Http\Controllers\Admins\GestionnaireController::class,'update'])->name('update');
-
+        Route::get('/status-edit/{id}',[App\Http\Controllers\Admins\GestionnaireController::class,'editstatus'])->name('editstatus');
+        Route::put('/status-update/{id}',[App\Http\Controllers\Admins\GestionnaireController::class,'updatestatus'])->name('updatestatus');
         //Route::delete('/delete/{id}',[App\Http\Controllers\Admins\RoleController::class, 'delete'])->name('delete');
     });
 
 
 });
+Route::middleware([
+    'auth:sanctum',
+    config('jetstream.auth_session'),
+    'verified',
+])->group(function () {
+    Route::get('/dashboard', function () {
+        return Inertia::render('Dashboard');
+    })->name('dashboard');
+    
+    Route::get("/redirectAuthenticatedUsers", [App\Http\Controllers\Auth\RedirectAuthenticatedUsersController::class, "home"]);
+
+    Route::group(['middleware' => 'checkRole:1'], function() {
+        return view('admin.dashboard')->name('adminDashboard');
+    });
+    Route::group(['middleware' => 'checkRole:0'], function() {
+        Route::inertia('/Dashboard', 'Dashboard')->name('Dashboard');
+    });
+});
+
+
 
 
 

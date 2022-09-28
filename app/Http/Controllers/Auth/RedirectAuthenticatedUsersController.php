@@ -10,7 +10,7 @@ class RedirectAuthenticatedUsersController extends Controller
     public function home()
     {
         if (auth()->user()->is_admin == 1) {
-            return redirect('/Admin/Dashboard');
+            return redirect('/admin/dashboard');
         }
         elseif(auth()->user()->is_admin == 0){
             return redirect('/Dashboard');

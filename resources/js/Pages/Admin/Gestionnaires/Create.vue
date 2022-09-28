@@ -101,8 +101,13 @@ const submit = () => {
                     class="mt-1 block w-full"
                     required
                     autocomplete="new-password"
-                />
+                    />
             </div>
+            <div class="mt-4">
+                <InputLabel for="ROLE" value="Role" />
+
+            </div>
+
 
             <div v-if="$page.props.jetstream.hasTermsAndPrivacyPolicyFeature" class="mt-4">
                 <InputLabel for="terms">
