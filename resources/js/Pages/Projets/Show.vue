@@ -73,7 +73,10 @@ export default {
                                   </div>
                                 </div>
                                 <p class="sr-only"> out of 5 stars</p>
-                                <a href="#" class="ml-3 text-sm font-medium text-indigo-600 hover:text-indigo-500">{{projet.financement_count  }} participants</a>
+                                <a href="#" class="ml-3 text-sm font-medium text-indigo-600 hover:text-indigo-500">
+                                    <!--{{ projet.financement_count }} participants-->
+                                    0 participants
+                                  </a>
                               </div>
                             </div>
                           </section>
@@ -110,8 +113,8 @@ export default {
                                 </div>
                                   <p class="text-lg text-black font-semibold">
                                   Cagnotte<br>
-                                    <progress class="progress progress-primary w-56 rounded-xl shadow-lg  " value="40" max="100"></progress>
-                                    40% 
+                                    <progress class="progress progress-primary w-56 rounded-xl shadow-lg  " value="0" max="100"></progress>
+                                    0% 
                                 </p>
                               </div>
 

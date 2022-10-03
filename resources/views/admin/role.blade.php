@@ -21,7 +21,7 @@
                       <tr>
                         <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Nom</th>
                         <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Date de Creation</th>
-                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"">Action</th>
+                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Action</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -64,10 +64,7 @@
         </div>
       </div>
     </div>
-    <div class="col-6 text-end  justify-center ml-80">
-        <button class="btn bg-gradient-primary text-white mb-0" ><i class="fas fa-plus"></i>&nbsp;&nbsp;Nouveau Role</button>
-    </div>
-
+    <hr class="horizontal dark mt-0">
     <div class="container-fluid py-4 w-80 ml-40">
       <div class="row ml-40 mt-4 bg-slate-200 rounded-xl border-none shadow-lg">
         <div class="">
@@ -198,6 +195,8 @@
         </div>
       </div>
     </div>
+
+    
 
 @endsection
 

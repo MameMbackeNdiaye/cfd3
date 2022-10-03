@@ -16,9 +16,9 @@ return new class extends Migration
         Schema::create('cagnottes', function (Blueprint $table) {
             $table->id();
             $table->string('codeCagnotte')->unique();
-            $table->dateTime('dateDebut');
-            $table->dateTime('dateFin');
-            $table->float('somme');
+            $table->dateTime('dateDebut')->timestamps();
+            $table->dateTime('dateFin')->nullable();
+            $table->float('somme')->nullable();
             $table->timestamps();
         });
     }

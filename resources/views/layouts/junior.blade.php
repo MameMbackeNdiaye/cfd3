@@ -48,9 +48,9 @@
     </div>
     <hr class="horizontal dark mt-0">
     <div class="collapse navbar-collapse  w-auto " id="sidenav-collapse-main">
-      <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link " href="dashboard">
+    <ul class="navbar-nav">
+        <li class="nav-item ">
+          <a class="nav-link {{ 'admin/dashboard' == request()->path() ? 'active' : '' }}" href="dashboard">
             <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
               <i class="ni ni-tv-2 text-primary text-sm opacity-10"></i>
             </div>
@@ -58,33 +58,36 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" href="../pages/tables.html">
+          <a class="nav-link {{ 'admin/gestionnaires' == request()->path() ? 'active' : '' }}" href="/admin/gestionnaires">
             <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-              <i class="ni ni-calendar-grid-58 text-warning text-sm opacity-10"></i>
+              <i class="ni ni-circle-08 text-primary text-sm opacity-10"></i>
+            </div>
+            <span class="nav-link-text ms-1">Utilisateurs</span>
+          </a>
+        </li>
+        @if(Auth::user()->role_id == 2)
+        <li class="nav-item">
+          <a class="nav-link {{ 'admin/financements' == request()->path() ? 'active' : '' }}" href="/admin/financements">
+            <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+              <i class="ni ni-money-coins m-1 text-success text-md opacity-10"></i>
+            </div>
+            <span class="nav-link-text ms-1">Gestion Financements</span>
+          </a>
+        </li>
+        @endif
+
+        <li class="nav-item">
+          <a class="nav-link {{ 'admin/projets' == request()->path() ? 'active' : '' }}" href="/admin/projets">
+            <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+              <i class="ni ni-ungroup text-info  text-sm opacity-10"></i>
             </div>
             <span class="nav-link-text ms-1">Projets</span>
           </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link " href="../pages/billing.html">
+        </li>  
+        <li class="nav-item ">
+          <a class="nav-link {{ 'admin/roles' == request()->path() ? 'active' : '' }}" href="/admin/roles">
             <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-              <i class="ni ni-credit-card text-success text-sm opacity-10"></i>
-            </div>
-            <span class="nav-link-text ms-1">Historiques projets</span>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link " href="/admin/gestionnaires">
-            <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-              <i class="ni ni-app text-info text-sm opacity-10"></i>
-            </div>
-            <span class="nav-link-text ms-1">Gestionnaires</span>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link " href="/admin/roles">
-            <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-              <i class="ni ni-world-2 text-danger text-sm opacity-10"></i>
+              <i class="ni ni-world-2 text-warning text-sm opacity-10"></i>
             </div>
             <span class="nav-link-text ms-1">Roles</span>
           </a>

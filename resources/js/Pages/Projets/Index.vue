@@ -37,9 +37,10 @@ export default {
       </div>
       </template>
     
-  <div class=" flex flex-wrap py-12 bg-gradient-to-br from-indigo-50 to-indigo-100 divide-y divide-slate-100 justify-center space-x-10">
+  <div class=" flex flex-wrap bg-gradient-to-br from-indigo-50 to-indigo-100 divide-y divide-slate-100 justify-center space-x-10">
     
-      <div v-for="projet in this.projetList" v-bind:key="projet.id">
+      <div class="w-50" v-for="projet in this.projetList" v-bind:key="projet.id">
+        <div v-if="projet.status=='acheve' || projet.status=='valide'">
           <div class=" scroll-pl-6 pt-12 text-2xl text-indigo-500 font-bold md:text-2xl">{{ projet.nom }}</div>
             <div class="flex justify-center py-4 px-1 max-w-lg mx-auto">
               <div class="py-8 px-8 max-w-sm mx-auto bg-white rounded-xl shadow-lg space-x-4 sm:py-4 sm:flex sm:items-center sm:space-y-0 sm:space-x-6 container">
@@ -65,8 +66,8 @@ export default {
                         <div class="pb-1  justify-center">
                         <p class="text-lg text-black font-semibold">
                           Cagnotte <br>
-                          <progress class="progress progress-primary w-56 rounded-xl shadow-lg  " value="40" max="100"></progress>
-                           40% 
+                          <progress class="progress progress-primary w-56 rounded-xl shadow-lg  " value="0" max="100"></progress>
+                           0% 
                        </p>
                         </div>
                         <div class="rating rating-xs">
@@ -78,7 +79,8 @@ export default {
                         </div>
                         <div>
                         <p class="text-lg text-black font-semibold">
-                          {{ projet.financement_count }} participants
+                          <!--{{ projet.financement_count }} participants-->
+                          0 participants
                         </p>
                         </div>
                   </div>
@@ -92,7 +94,8 @@ export default {
               </div>        
             </div>
           </div>
-        </div>
+      </div>
+    </div>
 
 <Footer></Footer>                                
   </AppLayout> 

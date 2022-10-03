@@ -14,6 +14,15 @@ const form = useForm({
     password: '',
     password_confirmation: '',
     terms: false,
+    prenom: '',
+    genre: '',
+    dateNaissance: '',
+    paysNaissance: '',
+    nationalite: '',
+    codePostal: '',
+    pays: '',
+    telephone: '',
+    contactAnnex: '',
 });
 
 const submit = () => {
@@ -33,7 +42,7 @@ const submit = () => {
 
         <form @submit.prevent="submit">
             <div>
-                <InputLabel for="name" value="Name" />
+                <InputLabel for="name" value="Nom" />
                 <TextInput
                     id="name"
                     v-model="form.name"
@@ -45,6 +54,21 @@ const submit = () => {
                 />
                 <InputError class="mt-2" :message="form.errors.name" />
             </div>
+
+            <div>
+                <InputLabel for="prenom" value="Prénom" />
+                <TextInput
+                    id="prenom"
+                    v-model="form.prenom"
+                    type="text"
+                    class="mt-1 block w-full"
+                    required
+                    autofocus
+                    autocomplete="prenom"
+                />
+                <InputError class="mt-2" :message="form.errors.name" />
+            </div>
+
 
             <div class="mt-4">
                 <InputLabel for="email" value="Email" />
@@ -84,6 +108,92 @@ const submit = () => {
                 <InputError class="mt-2" :message="form.errors.password_confirmation" />
             </div>
 
+            <div>
+                <InputLabel for="genre" value="Genre" />
+                <select name="genre" id="genre" v-model="form.genre">
+                    <option value="" selected>Choisir une option</option>
+                    <option value="1">homme</option>
+                    <option value="2">femme</option>
+                </select>
+            </div> 
+
+            <div class="mt-4">
+                <InputLabel for="dateNaissance" value="Date de naissance" />
+                <TextInput
+                    id="dateNaissance"
+                    v-model="form.dateNaissance"
+                    type="date"
+                    class="mt-1 block w-full"
+                    required
+                />
+            </div>
+
+            <div class="mt-4">
+                <InputLabel for="paysNaissance" value="Pays de naissance" />
+                <TextInput
+                    id="paysNaissance"
+                    v-model="form.paysNaissance"
+                    type="text"
+                    class="mt-1 block w-full"
+                    required
+                />
+            </div>
+
+            <div class="mt-4">
+                <InputLabel for="nationalite" value="Nationalite" />
+                <TextInput
+                    id="nationalite"
+                    v-model="form.nationalite"
+                    type="text"
+                    class="mt-1 block w-full"
+                    required
+                />
+            </div>
+
+            <div class="mt-4">
+                <InputLabel for="codePostal" value="Code Postal" />
+                <TextInput
+                    id="codePostal"
+                    v-model="form.codePostal"
+                    type="text"
+                    class="mt-1 block w-full"
+                    required
+                />
+            </div>
+
+            <div class="mt-4">
+                <InputLabel for="pays" value="Pays" />
+                <select name="pays" id="pays" v-model="form.pays">
+                    <option value="" selected>Choisir une option</option>
+                    <option value="1">senegal</option>
+                    <option value="2">gambie</option>
+                </select>
+            </div>
+            <div class="mt-4">
+                <InputLabel for="telephone" value="Telephone" />
+                <TextInput
+                    id="telephone"
+                    v-model="form.telephone"
+                    type="text"
+                    class="mt-1 block w-full"
+                    required
+                />
+            </div>
+
+            <div class="mt-4">
+                <InputLabel for="contactAnnex" value="Contact Annex" />
+                <TextInput
+                    id="contactAnnex"
+                    v-model="form.contactAnnex"
+                    type="text"
+                    class="mt-1 block w-full"
+                    required
+                />
+            </div>
+
+
+
+
             <div v-if="$page.props.jetstream.hasTermsAndPrivacyPolicyFeature" class="mt-4">
                 <InputLabel for="terms">
                     <div class="flex items-center">
@@ -99,11 +209,11 @@ const submit = () => {
 
             <div class="flex items-center justify-end mt-4">
                 <Link :href="route('login')" class="underline text-sm text-gray-600 hover:text-gray-900">
-                    Already registered?
+                    j'ai deja un compte
                 </Link>
 
                 <PrimaryButton class="ml-4" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
-                    Register
+                    Enregistrer 
                 </PrimaryButton>
             </div>
         </form>

@@ -33,6 +33,7 @@ Route::get('/projets/{id}', 'App\Http\Controllers\ProjetController@show')->name(
 Route::get('/projets/{id}/addFinance', 'App\Http\Controllers\ProjetController@addFinance')->name('projets.addFinace');    
 Route::get('/addProject', 'App\Http\Controllers\ProjetController@addProject')->name('projets.addProject');    
 Route::get('/addProject/addProjectForm', 'App\Http\Controllers\ProjetController@addProjectForm')->name('projets.addProjectForm');    
+Route::post('/addProject/store', 'App\Http\Controllers\ProjetController@addProjectStore')->name('projets.addProjectStore');    
 
 
 
@@ -57,6 +58,7 @@ Route::prefix('admin')->middleware(['auth:sanctum','verified'])->name('admin.')-
         Route::delete('/delete/{id}',[App\Http\Controllers\Admins\RoleController::class, 'destroy'])->name('destroy');
         Route::get('/role-edit/{id}',[App\Http\Controllers\Admins\RoleController::class,'registeredit'])->name('registeredit');
         Route::put('/role-register-update/{id}',[App\Http\Controllers\Admins\RoleController::class,'registerupdate'])->name('registerupdate');
+
             
     });
     Route::prefix('gestionnaires')->name('gestionnaires.')->group(function(){
@@ -69,6 +71,32 @@ Route::prefix('admin')->middleware(['auth:sanctum','verified'])->name('admin.')-
         Route::get('/status-edit/{id}',[App\Http\Controllers\Admins\GestionnaireController::class,'editstatus'])->name('editstatus');
         Route::put('/status-update/{id}',[App\Http\Controllers\Admins\GestionnaireController::class,'updatestatus'])->name('updatestatus');
         //Route::delete('/delete/{id}',[App\Http\Controllers\Admins\RoleController::class, 'delete'])->name('delete');
+    });
+
+    Route::prefix('projets')->name('projets.')->group(function(){
+        Route::get('/',[App\Http\Controllers\Admins\AdminProjetController::class,'index'])->name('index');
+        Route::get('/modif/{id}',[App\Http\Controllers\Admins\AdminProjetController::class,'edit'])->name('edit');
+        Route::put('/update/{id}',[App\Http\Controllers\Admins\AdminProjetController::class,'update'])->name('update');
+
+    });
+
+    Route::prefix('profils')->name('profils.')->group(function(){
+        Route::get('/',[App\Http\Controllers\Admins\AdminProfilController::class,'index'])->name('index');
+        Route::get('/modif/{id}',[App\Http\Controllers\Admins\AdminProjetController::class,'edit'])->name('edit');
+        Route::put('/update/{id}',[App\Http\Controllers\Admins\AdminProjetController::class,'update'])->name('update');
+
+    });
+
+    Route::prefix('financements')->name('financements')->group(function(){
+        Route::get('/',[App\Http\Controllers\Admins\AdminFinancementController::class,'index'])->name('index');
+        Route::get('/modif/{id}',[App\Http\Controllers\Admins\AdminProjetController::class,'edit'])->name('edit');
+        Route::put('/update/{id}',[App\Http\Controllers\Admins\AdminProjetController::class,'update'])->name('update');
+        Route::post('/store',[App\Http\Controllers\Admins\GestionnaireController::class,'store'])->name('store');
+        Route::get('/edit/{id}',[App\Http\Controllers\Admins\GestionnaireController::class,'edit'])->name('edit');
+        //Route::put('/update',[App\Http\Controllers\Admins\GestionnaireController::class,'update'])->name('update');
+        Route::get('/status-edit/{id}',[App\Http\Controllers\Admins\GestionnaireController::class,'editstatus'])->name('editstatus');
+        Route::put('/status-update/{id}',[App\Http\Controllers\Admins\GestionnaireController::class,'updatestatus'])->name('updatestatus');
+
     });
 
 

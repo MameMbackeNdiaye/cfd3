@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('title')
- Here is our Dashbord
+ Profil
 @endsection  
 
 @section('container')
@@ -12,4 +12,3 @@
 @section('scripts')
 
 @endsection
-

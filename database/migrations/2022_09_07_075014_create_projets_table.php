@@ -31,7 +31,10 @@ return new class extends Migration
             $table->bigInteger('articles_id')->unsigned()->nullable();
             $table->foreign('articles_id')->references('id')->on('articles');
             $table->string('nom');
+            $table->string('status')->default("en attente");
+            $table->integer('budjet')->nullable();
             $table->text('description');
+
             $table->timestamps();
         });
     }

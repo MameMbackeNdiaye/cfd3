@@ -7,5 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Cagnotte extends Model
 {
+    protected $fillable = array('codeCagnotte','nom');
     use HasFactory;
 }

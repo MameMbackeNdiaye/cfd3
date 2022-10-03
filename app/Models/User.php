@@ -31,7 +31,16 @@ class User extends Authenticatable
         'is_admin',
         'status',
         'password',
-        'role_id'
+        'role_id',
+        'prenom',
+        'genre',
+        'dateNaissance',
+        'paysNaissance',
+        'nationalite',
+        'codePostal',
+        'pays',
+        'telephone',
+        'contactAnnex',
     ];
     
 

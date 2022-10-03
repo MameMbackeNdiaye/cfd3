@@ -61,7 +61,7 @@
                                 </div>
                                 <div class="d-flex flex-column" >
                                 <h6 class="mb-1 text-slate-600 text-sm font-bold" >{{$user->name}}</h6>
-                                <span class="text-xs">250 in stock, <span class="font-weight-bold">346+ sold</span></span>
+                                <span class="text-xs">flux ajouté, <span class="font-weight-bold">+30</span></span>
                                 </div>
                             </div>
                             <div class="d-flex">
