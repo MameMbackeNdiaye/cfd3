@@ -15,13 +15,19 @@ export default {
     ProgressBar
   },
 
-  props:['projets','cagnotte'],
+  props:['projets','cagnottes'],
 
    data() {
     return {
       projetList: this.projets,
-      cagnotteList: this.cagnottes
+      cagnotteList: this.cagnottes,
+      percentage: 0
     }
+  },
+  created(){
+    setInterval(() =>{
+
+    }, 10)
   },
   daisyui: {
     themes: ["light", "dark", "cupcake", "bumblebee", "emerald", "corporate", "synthwave", "retro", "cyberpunk", "valentine", "halloween", "garden", "forest", "aqua", "lofi", "pastel", "fantasy", "wireframe", "black", "luxury", "dracula", "cmyk", "autumn", "business", "acid", "lemonade", "night", "coffee", "winter"],
@@ -74,19 +80,14 @@ export default {
                           {{ projet.description }}
                         </p>
                         </div>
-                      <div class="pb-1  justify-center">
-                        <p class="text-lg text-black font-semibold">
+                      <span v-for="cagnotte in this.cagnotteList" v-bind:key="cagnotte.id" class="pb-1  justify-center">
+                        <p v-if="cagnotte.id==projet.cagnottes_id" class="text-lg text-black font-semibold">
                           Cagnotte <br>
-                          <progress class="progress progress-primary w-56 rounded-xl shadow-lg  " value="0" max="100"></progress>
-                           0% 
+
+                          <progress class="progress progress-primary w-56 rounded-xl shadow-lg  " :value="cagnotte.somme * 100 /projet.budjet" max="100"></progress>
+                           {{Math.floor( cagnotte.somme * 100 /projet.budjet)}} % 
                        </p>
-                        </div>
-                      <div class="pb-1  justify-center">
-                        <p class="text-lg text-black font-semibold">
-                          Cagnotte <br>
-                          <progress-bar :invest = "financements" :financements="projet.financement"/>
-                       </p>
-                        </div>
+                        </span>
                         <div class="rating rating-xs">
                           <input type="radio" name="rating-3" class="mask mask-star-2 bg-orange-400" />
                           <input type="radio" name="rating-3" class="mask mask-star-2 bg-orange-400" checked />

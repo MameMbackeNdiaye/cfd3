@@ -52,7 +52,7 @@
                       </td>
                       <td class="align-middle">
                       <div class="col-6 text-end  justify-center ml-80">
-                        <a href="{{url('admin/fiancement/modif/'.$f->id)}}" class="btn bg-gradient-success text-white mb-0" ><i class="fas fa-plus"></i>&nbsp;&nbsp;Enregistrer</a>
+                        <a href="{{url('admin/financements/modif/'.$f->id)}}" class="btn bg-gradient-success text-white mb-0" ><i class="fas fa-plus"></i>&nbsp;&nbsp;Enregistrer</a>
                       </div>
                       </td>
                     </tr>

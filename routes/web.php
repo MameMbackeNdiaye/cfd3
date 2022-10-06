@@ -93,8 +93,8 @@ Route::prefix('admin')->middleware(['auth:sanctum','verified'])->name('admin.')-
 
     Route::prefix('financements')->name('financements')->group(function(){
         Route::get('/',[App\Http\Controllers\Admins\AdminFinancementController::class,'index'])->name('index');
-        Route::get('/modif/{id}',[App\Http\Controllers\Admins\AdminProjetController::class,'edit'])->name('edit');
-        Route::put('/update/{id}',[App\Http\Controllers\Admins\AdminProjetController::class,'update'])->name('update');
+        Route::get('/modif/{id}',[App\Http\Controllers\Admins\AdminFinancementController::class,'edit'])->name('edit');
+        Route::put('/update/{id}',[App\Http\Controllers\Admins\AdminFinancementController::class,'update'])->name('update');
         Route::post('/store',[App\Http\Controllers\Admins\AdminFinancementController::class,'store'])->name('store');
         Route::get('/edit/{id}',[App\Http\Controllers\Admins\GestionnaireController::class,'edit'])->name('edit');
         //Route::put('/update',[App\Http\Controllers\Admins\GestionnaireController::class,'update'])->name('update');

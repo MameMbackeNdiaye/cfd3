@@ -33,7 +33,7 @@ export default {
   <p > <!--{{ greeting }} !--></p>
   <AppLayout title="Crowdfunding" data-theme="light">
     <template #header >
-      <div class="text-2xl font-extrabold text-gray-900 sm:pr-12">
+      <div class="text-2xl  p-8 font-extrabold text-gray-900 sm:pr-12">
         Details projet
       </div>
       
