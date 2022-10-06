@@ -33,4 +33,10 @@ class Projet extends Model
         return $this->hasMany(Financement::class);
     }
 
+    public function cagnotte()
+    {
+        return $this->belongsTo(Cagnotte::class, 'cagnottes_id');
+    }
+
+
 }

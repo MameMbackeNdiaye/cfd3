@@ -41,17 +41,17 @@ export default {
 
 <template data-theme="dark">
   <p > <!--{{ greeting }} !--></p>
-  <AppLayout title="Crowdfunding" data-theme="light">
+  <AppLayout title="Crowdfunding" data-theme="garden">
       <section class="bg-white dark:bg-white">
-            <div class="grid max-w-screen-xl px-4 py-8 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12">
+            <div class="grid max-w-screen-xl px-4 py-8 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12"  >
                 <div class="mr-auto place-self-center lg:col-span-7">
-                    <h1 class="max-w-2xl mb-4 text-4xl font-extrabold tracking-tight leading-none md:text-5xl xl:text-6xl dark:text-black">Payments tool for software companies</h1>
-                    <p class="max-w-2xl mb-6 font-dark text-gray-500 lg:mb-8 md:text-lg lg:text-xl dark:text-indigo-400">From checkout to global sales tax compliance, companies around the world use Flowbite to simplify their payment stack.</p>
+                    <h1 class="max-w-2xl mb-4 text-4xl font-extrabold tracking-tight leading-none md:text-5xl xl:text-6xl dark:text-black">Votre voyage de collecte de fonds avec nous</h1>
+                    <p class="max-w-2xl mb-6 font-dark text-gray-500 lg:mb-8 md:text-lg lg:text-xl dark:text-indigo-400">Notre équipe d'experts et nos partenaires de confiance travailleront avec vous à chaque étape du processus pour vous aider à augmenter vos investissements de manière efficace et efficiente.</p>
                     <a href="#" class="inline-flex items-center justify-center px-5 py-3 mr-3 text-base font-medium text-center text-warning rounded-lg bg-primary-800 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 dark:focus:ring-primary-900">
                         Get started
                         <svg class="w-5 h-5 ml-2 -mr-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
                     </a>
-                    <a :href=" '/addProject/' + 'addProjectForm' " class="inline-flex items-center justify-center font-extrabold px-5 py-3 text-base  text-center text-indigo-500 border border-indigo-300 rounded-lg hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 dark:text-gray dark:border-indigo-400 dark:hover:bg-indigo-900 dark:focus:ring-gray-100">
+                    <a :href=" '/addProject/' + 'addProjectForm' " class="inline-flex items-center justify-center font-extrabold px-5 py-3 text-base  text-center text-indigo-500 border border-indigo-300 rounded-lg hover:bg-warning focus:ring-4 focus:ring-gray-100 dark:text-gray dark:border-indigo-400 dark:hover:bg-indigo-900 dark:focus:ring-gray-100">
                          Lancer mon projet
                     </a> 
                 </div>
@@ -60,28 +60,37 @@ export default {
                 </div>                
             </div>
         </section>
-
+    <section data-theme="garden">
         <div class="py-12 bg-grey">
           <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="lg:text-center">
               <h2 class="text-base text-indigo-600 font-semibold tracking-wide uppercase">Crowdfunding</h2>
               <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">Un nouveau moyen pour financer son projet</p>
-              <p class="mt-4 max-w-2xl text-xl text-gray-500 lg:mx-auto">Lorem ipsum dolor sit amet consect adipisicing elit. Possimus magnam voluptatum cupiditate veritatis in accusamus quisquam.</p>
+              <p class="mt-4 max-w-2xl text-xl text-gray-500 lg:mx-auto">Stratégie de financement d'entreprise qui se concentre sur la collecte de petites sommes d'argent auprès d'un plus grand collectif d'individus.</p>
             </div>
           </div>
         </div>
 
-        <div class="bg-white ">
-            <div class="max-w-2xl mx-auto py-24 px-4 grid items-center grid-cols-1 gap-y-16 gap-x-8 sm:px-6 sm:py-32 lg:max-w-7xl lg:px-8 lg:grid-cols-2">
+        <div class="bg-white  ">
+            <div class="max-w-2xl mb-24 mx-auto py-24 px-4 grid items-center grid-cols-1 gap-y-16 gap-x-8 sm:px-6 sm:py-32 lg:max-w-7xl lg:px-8 lg:grid-cols-2">
               <div>
                 <h2 class="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">Domaines impactants</h2>
-                <p class="mt-4 text-gray-500">The walnut wood card tray is precision milled to perfectly fit a stack of Focus cards. The powder coated steel divider separates active cards from new ones, or can be used to archive important task lists.</p>
+                <p class="mt-4 text-gray-500">ToGether est conscient de l'urgence de developpement des secteurs clés de l'economie du pays</p>
               </div>
-              <div class="grid grid-cols-2  grid-rows-2 gap-4 sm:gap-6 lg:gap-8">
-                <img src="https://images.unsplash.com/photo-1508614589041-895b88991e3e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1112&q=80" alt="Walnut card tray with white powder coated steel divider and 3 punchout holes." class="bg-gray-100 rounded-lg" />
-                <img src="https://images.unsplash.com/photo-1558449028-b53a39d100fc?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074&q=80" class="bg-gray-100 shadow-md  rounded-lg" />
+              <h1 class="text-base text-white p-8 bg-blue-900 font-semibold tracking-wide uppercase">Technologies et Ressources naturelles</h1>
+              <div class="grid grid-cols-2   grid-rows-2 gap-4 sm:gap-6lg:gap-8">
+                <img src="https://images.unsplash.com/photo-1495810551032-2043a52a19c5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" alt="Walnut card tray with white powder coated steel divider and 3 punchout holes." class="bg-gray-100 rounded-lg" />
+                <img src="https://images.unsplash.com/photo-1521618755572-156ae0cdd74d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1176&q=80" class="bg-gray-100 shadow-md  rounded-lg" />
+                <img src="https://images.unsplash.com/photo-1622979135240-caa6648190b6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" class="bg-gray-100 shadow-md  rounded-lg"/>
+                <img src="https://images.unsplash.com/photo-1612832021455-245704c6755a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1182&q=80" alt="Walnut card tray filled with cards and card angled in dedicated groove." class="bg-gray-100 shadow-md rounded-lg" />
+
+              </div>
+              <div class="grid grid-cols-2 grid-rows-2 gap-4 sm:gap-6lg:gap-8">
+                <img src="https://images.unsplash.com/photo-1594771804886-a933bb2d609b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1182&q=80" alt="Walnut card tray with white powder coated steel divider and 3 punchout holes." class="bg-gray-100 rounded-lg" />
+                <img src="https://images.unsplash.com/photo-1586771107445-d3ca888129ff?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1yZWxhdGVkfDN8fHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=500&q=60" class="bg-gray-100 shadow-md  rounded-lg" />
                 <img src="https://images.unsplash.com/photo-1624668430039-0175a0fbf006?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" class="bg-gray-100 rounded-lg" />
                 <img src="https://images.unsplash.com/photo-1471193945509-9ad0617afabf?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" alt="Walnut card tray filled with cards and card angled in dedicated groove." class="bg-gray-100 shadow-md rounded-lg" />
+
               </div>
             </div>
           </div>
@@ -104,10 +113,7 @@ export default {
                 <div class="px-6 py-12 md:px-12">
                   <h2 class="text-3xl font-bold mb-4 text-blue-600 display-5">Pourquoi est-ce si génial?</h2>
                   <p class="text-gray-500 mb-12">
-                    Nunc tincidunt vulputate elit. Mauris varius purus malesuada neque iaculis
-                    malesuada. Aenean gravida magna orci, non efficitur est porta id. Donec magna
-                    diam.
-                  </p>
+                  Les porteurs de projets collectent plus et construisent de plus grandes communautés avec ToGether                   </p>
 
                   <div class="grid lg:gap-x-12 md:grid-cols-3">
                     <div class="mb-12 md:mb-0">
@@ -129,7 +135,9 @@ export default {
               </div>
             </div>
           </div>
-    </div>
+        
+      </div>
+    </section>
 <Footer></Footer>
 
   </AppLayout>

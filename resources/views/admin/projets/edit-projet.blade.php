@@ -32,6 +32,16 @@
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
+                                <label for="example-text-input" class="form-control-label">Lancer la cagnotte</label>
+                                @foreach ($cagnottes as  $c)
+                                    @if ($c->created_at==$editprojet->created_at)
+                                        <input class="form-control" readonly value="{{$c->id}}" name="cagnottes_id" type="text">
+                                    @endif
+                                @endforeach
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
                                 <label for="example-text-input" class="form-control-label">Description</label>
                                 <textarea class="form-control" rows="4" cols="5"  name="description" >{{$editprojet->description}}</textarea>
                             </div>

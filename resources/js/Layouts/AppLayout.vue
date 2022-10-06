@@ -37,7 +37,7 @@ const logout = () => {
         <div class="min-h-screen bg-gray-100">
             <nav class="bg-white border-b border-gray-100">
                 <!-- Primary Navigation Menu -->
-                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class=" mx-auto px-4 sm:px-6 lg:px-8 p-2" data-theme="light">
                     <div class="flex justify-between h-16">
                         <div class="flex">
                             <!-- Logo -->
@@ -49,28 +49,23 @@ const logout = () => {
 
                             <!-- Navigation Links -->
                             <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                                <NavLink :href="route('dashboard')" :active="route().current('dashboard')">
+                                <NavLink class="font-bold ml-80" :href="route('dashboard')" :active="route().current('dashboard')">
                                     Home
                                 </NavLink>
                             </div>
                             <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                                <NavLink :href="route('projets.index')" :active="route().current('projets.index')">
+                                <NavLink class="font-bold" :href="route('projets.index')" :active="route().current('projets.index')">
                                     Liste projets
                                 </NavLink>
                             </div>
                             <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                                <NavLink :href="route('projets.addProject')" :active="route().current('projets.addProject')">
+                                <NavLink class="font-bold" :href="route('projets.addProject')" :active="route().current('projets.addProject')">
                                     Ajout projet
                                 </NavLink>
                             </div>
                             <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                                <NavLink :href="route('dashboard')" :active="route().current('dashboard')">
+                                <NavLink class="font-bold" >
                                     Blog
-                                </NavLink>
-                            </div>
-                            <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                                <NavLink :href="route('dashboard')" :active="route().current('dashboard')">
-                                    A propos
                                 </NavLink>
                             </div>
                         </div>
@@ -225,7 +220,7 @@ const logout = () => {
                     </div>
                 </div>
 
-                <!-- Responsive Navigation Menu -->
+                <!-- Responsive Navigation Menu --> 
                 <div :class="{'block': showingNavigationDropdown, 'hidden': ! showingNavigationDropdown}" class="sm:hidden">
                     <div class="pt-2 pb-3 space-y-1">
                         <ResponsiveNavLink :href="route('dashboard')" :active="route().current('dashboard')">
@@ -317,7 +312,7 @@ const logout = () => {
 
             <!-- Page Heading -->
             <header v-if="$slots.header" class="bg-white shadow">
-                <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+                <div class="max-w-11xl mx-auto  ">
                     <slot name="header" />
                 </div>
             </header>

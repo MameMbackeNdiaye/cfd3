@@ -2,6 +2,7 @@
 import AppLayout from '@/Layouts/AppLayout.vue';
 import Footer from '@/Layouts/Footer.vue';
 import Welcome from '@/Jetstream/Welcome.vue';
+import ProgressBar from '@/Pages/Projets/ProgressBar.vue';
 export default {
  /* data() {
     return {
@@ -10,14 +11,16 @@ export default {
   }*/
   components: {
     AppLayout,
-    Footer
+    Footer,
+    ProgressBar
   },
 
-  props:['projets'],
+  props:['projets','cagnotte'],
 
    data() {
     return {
-      projetList: this.projets
+      projetList: this.projets,
+      cagnotteList: this.cagnottes
     }
   },
   daisyui: {
@@ -28,18 +31,18 @@ export default {
 </script>
 
 
-<template data-theme="light">
+<template data-theme="garden">
   <p > <!--{{ greeting }} !--></p>
   <AppLayout title="Crowdfunding" data-theme="dark">
     <template #header >
-      <div class="text-2xl font-extrabold text-gray-900 sm:pr-12">
+      <div class="text-2xl p-4 font-extrabold text-gray-900 sm:pr-12">
         Liste des projets
       </div>
       </template>
     
-  <div class=" flex flex-wrap bg-gradient-to-br from-indigo-50 to-indigo-100 divide-y divide-slate-100 justify-center space-x-10">
+  <div class=" flex flex-wrap divide-y divide-slate-100 justify-center space-x-10" data-theme="garden">
     
-      <div class="w-50" v-for="projet in this.projetList" v-bind:key="projet.id">
+      <div class="w-45" v-for="projet in this.projetList" v-bind:key="projet.id">
         <div v-if="projet.status=='acheve' || projet.status=='valide'">
           <div class=" scroll-pl-6 pt-12 text-2xl text-indigo-500 font-bold md:text-2xl">{{ projet.nom }}</div>
             <div class="flex justify-center py-4 px-1 max-w-lg mx-auto">
@@ -48,26 +51,40 @@ export default {
                   <div class="space-y-0.5">
                     <img class="block mx-auto rounded-xl shadow-lg" src="https://images.unsplash.com/photo-1523132797263-747d5d0dbbb3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80" alt="image projet">
                     <div>
-                      <p class="text-lg text-primary font-semibold">
+                      <p v-if="projet.themes_id==1" class="text-lg text-primary font-semibold">
                         Theme: 
-                        {{ projet.themes_id }}
+                        Technologie
                       </p>
-                      </div>
+                      <p v-if="projet.themes_id==2" class="text-lg text-primary font-semibold">
+                        Theme: 
+                        Agriculture
+                      </p>
+                      <p v-if="projet.themes_id==3" class="text-lg text-primary font-semibold">
+                        Theme: 
+                        Energie/Ressources naturelles
+                      </p>
+                    </div>
                       <div>
                         <p class="text-slate-500 font-medium">
                         #{{ projet.codeProjet }}
                         </p>
-                        </div>
-                        <div>
+                      </div>
+                      <div>
                         <p class="text-lg text-black font-semibold">
                           {{ projet.description }}
                         </p>
                         </div>
-                        <div class="pb-1  justify-center">
+                      <div class="pb-1  justify-center">
                         <p class="text-lg text-black font-semibold">
                           Cagnotte <br>
                           <progress class="progress progress-primary w-56 rounded-xl shadow-lg  " value="0" max="100"></progress>
                            0% 
+                       </p>
+                        </div>
+                      <div class="pb-1  justify-center">
+                        <p class="text-lg text-black font-semibold">
+                          Cagnotte <br>
+                          <progress-bar :invest = "financements" :financements="projet.financement"/>
                        </p>
                         </div>
                         <div class="rating rating-xs">
@@ -79,8 +96,8 @@ export default {
                         </div>
                         <div>
                         <p class="text-lg text-black font-semibold">
-                          <!--{{ projet.financement_count }} participants-->
-                          0 participants
+                          {{ projet.financement_count }} participants
+                         
                         </p>
                         </div>
                   </div>

@@ -74,8 +74,8 @@ export default {
                                 </div>
                                 <p class="sr-only"> out of 5 stars</p>
                                 <a href="#" class="ml-3 text-sm font-medium text-indigo-600 hover:text-indigo-500">
-                                    <!--{{ projet.financement_count }} participants-->
-                                    0 participants
+                                    {{ projet.financement_count }} participants
+                                    
                                   </a>
                               </div>
                             </div>
@@ -85,15 +85,21 @@ export default {
                             <h3 id="" class="sr-only">Product options</h3>
 
                             <form>
-                              <!-- theme -->
-                              <div>
-                                <h4 class="text-sm text-gray-900 font-medium">Theme du projet</h4>
-
-                                <p class="text-lg text-primary font-semibold">
-                                  Theme: 
-                                  {{ projet.themes_id }}
-                                </p>
-                              </div>
+                                <!-- theme -->
+                            <div>
+                              <p v-if="projet.themes_id==1" class="text-lg text-primary font-semibold">
+                                Theme du projet: 
+                                Technologie
+                              </p>
+                              <p v-if="projet.themes_id==2" class="text-lg text-primary font-semibold">
+                                Theme du projet: 
+                                Agriculture
+                              </p>
+                              <p v-if="projet.themes_id==3" class="text-lg text-primary font-semibold">
+                                Theme du projet: 
+                                Energie/Ressources naturelles
+                              </p>
+                            </div>
 
                               <!-- description -->
                               <div class="mt-10">

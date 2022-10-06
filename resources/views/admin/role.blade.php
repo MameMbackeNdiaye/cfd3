@@ -41,7 +41,7 @@
                             <p class="ml-60 text-xs text-secondary mb-0">{{$role->created_at}}</p>
                         </td>
                         <td class="align-middle ml-2">
-                            <i class="ni ni-settings text-success text-sm opacity-8"></i>
+                            <i class="ni ni-settings text-warning text-sm opacity-8"></i>
                                 <a href="{{ url('/admin/roles/edit/'.$role->id) }}" type="button" name="edit" class=" m-1 text-dark hover-bordered font-weight-bold text-xs" >Editer</a>
                         </td>
                         </tr>

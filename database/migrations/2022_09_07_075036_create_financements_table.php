@@ -16,11 +16,13 @@ return new class extends Migration
         Schema::create('financements', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('projet_id')->unsigned()->nullable();
-            $table->foreign('projet_id')->references('id')->on('projets');
+            $table->foreign('projet_id')->references('id')->on('projets')->nullable();
+            $table->foreign('users_id')->references('id')->on('users')->nullable();
             $table->string('codeFinancement');
             $table->string('nom');
+            $table->string('status');
             $table->float('sommeFinancee');
-            $table->dateTime('dateFinancement');
+            $table->boolean('facture')->default(0);
             $table->boolean('etatProjet');
             $table->timestamps();
         });

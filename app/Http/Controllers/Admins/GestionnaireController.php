@@ -38,7 +38,8 @@ class GestionnaireController extends Controller
         return view('admin.Gestionnaires.List', ['users' => $user]);
             */
             $users = User::all();
-            return view('admin.register', ['users' => $users]);
+            $roles = Role::all();
+            return view('admin.register', ['users' => $users,'roles' => $roles]);
     }
 
     /**
@@ -216,4 +217,23 @@ class GestionnaireController extends Controller
 
     }
 
+    public function gestionnairesedit($id)
+    {
+        $users = User::findOrFail($id);
+        $roles = Role::all();
+        return view('admin.profil',['roles' => $roles])->with('users',$users);
+
+    }
+
+    public function gestionnairesupdate(Request $request, $id)
+    {
+        $users = User::find($id);
+        $users->name = $request->input('name');
+        $users->email = $request->input('email');
+        $users->update();
+
+        return back()->with('status','La mise a jour a ete effectué avec succès');
+
+
+    }
 }

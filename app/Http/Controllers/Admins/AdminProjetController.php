@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admins;
 
 use App\Http\Controllers\Controller;
+use App\Models\Cagnotte;
 use App\Models\Projet;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -22,8 +23,9 @@ class AdminProjetController extends Controller
     public function edit($id)
     {
         $editprojet= Projet::findOrFail($id);
+        $cagnottes = Cagnotte::all();
         
-        return view('admin.projets.edit-projet')
+        return view('admin.projets.edit-projet', ['cagnottes'=>$cagnottes])
             ->with('editprojet',$editprojet);
         
     }
@@ -32,6 +34,7 @@ class AdminProjetController extends Controller
     {
         $updateprojets = Projet::findOrFail($id);
         $updateprojets->status = $request->input('status');
+        $updateprojets->cagnottes_id = $request->input('cagnottes_id');
         $updateprojets->update();
 
         return redirect('/admin/projets')->with('status', 'le projet a ete valide avec succes');

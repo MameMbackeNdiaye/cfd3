@@ -17,11 +17,13 @@ class ProjetController extends Controller
     public function index()
     {
         $projets = Projet::withCount('financement')->get();
+        $cagnottes = Cagnotte::all();
+        $financements = Financement::all();
 
 
         return Inertia::render('Projets/Index', [
-            'projets' => $projets
-        ]);
+            'projets' => $projets,'cagnottes' => $cagnottes,'financements'=>$financements
+        ]); 
     }
 
     public function show( int $id)
@@ -68,8 +70,9 @@ class ProjetController extends Controller
      */
 
     public function addProjectStore(Request $request){
-
+        //dd($request);
         $cagnotte = new Cagnotte();
+        $cagnotte->save(); 
         //1 ou 0
         error_log($cagnotte->id.'-=============================');
         Validator::make($request->all(), [
@@ -80,11 +83,31 @@ class ProjetController extends Controller
             'users_id' => ['required'],
             
         ])->validate();
-        $cagnotte->save();
+       
         Projet::create($request->all());
 
         return redirect()->back()
                     ->with('message', 'Project Created Successfully.');   
+
+    }
+
+    public function addFinancementStore(Request $request)
+    {
+        //dd($request);
+        Validator::make($request->all(), [
+            'projet_id' => ['required'],
+            'sommeFinancee' => ['required'],
+            'users_id' => ['required'],
+            'facture' => ['required'],
+            
+        ])->validate();
+        error_log($request.'-=============================');
+
+        Financement::create($request->all());
+
+        return redirect()->back()
+                    ->with('message', 'Financement Created Successfully.');   
+
 
     }
 

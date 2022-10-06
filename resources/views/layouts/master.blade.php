@@ -81,13 +81,13 @@
 
 <body class="g-sidenav-show   bg-gray-100">
 
-<div class="min-height-300 bg-primary position-absolute w-100"></div>
+<div class="min-height-300 bg-dark position-absolute w-100"></div>
   <aside class="sidenav bg-white navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-4 " id="sidenav-main">
   <div class="sidenav-header mx-auto ml-6">
       <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav"></i>
       <a class="navbar-brand m-0" class="mt-12 " href="" target="_blank">
-        <img src="https://static.vecteezy.com/system/resources/previews/001/188/239/non_2x/heart-logo-png.png" class="navbar-brand-img h-100 w-20" alt="main_logo">
-        <span class="ms-1 font-weight-bold ">.Us| Dashbord</span>
+        <img src="../assets/img/logo4.png" class="navbar-brand-img h-100 w-20" alt="main_logo">
+        <span class="ms-1 font-weight-bold ">ToGether Sn</span>
       </a>
     </div>
     <hr class="horizontal dark mt-0">
@@ -119,7 +119,7 @@
           </a>
         </li>
         @endif
-
+        @if(Auth::user()->role_id != 2)
         <li class="nav-item">
           <a class="nav-link {{ 'admin/projets' == request()->path() ? 'active' : '' }}" href="/admin/projets">
             <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
@@ -127,7 +127,9 @@
             </div>
             <span class="nav-link-text ms-1">Projets</span>
           </a>
-        </li>  
+        </li> 
+        @endif 
+        @if(Auth::user()->role_id == 1)
         <li class="nav-item ">
           <a class="nav-link {{ 'admin/roles' == request()->path() ? 'active' : '' }}" href="/admin/roles">
             <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
@@ -136,11 +138,12 @@
             <span class="nav-link-text ms-1">Roles</span>
           </a>
         </li>
+        @endif
         <li class="nav-item mt-3">
           <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Account pages</h6>
         </li>
         <li class="nav-item">
-          <a class="nav-link {{ 'admin/roles' == request()->path() ? 'active' : '' }}" href="/admin/profils">
+          <a class="nav-link {{ 'admin/profil' == request()->path() ? 'active' : '' }}" href="/admin/gestionnaires/gestionnaires-edit/{{Auth::user()->id}}">
             <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
               <i class="ni ni-single-02 text-dark text-sm opacity-10"></i>
             </div>
@@ -159,7 +162,7 @@
           </div>
         </div>
       </div>
-      <a class="btn btn-primary btn-sm mb-0 w-100" href="/Dashboard" type="button">Go !</a>
+      <a class="btn btn-dark btn-sm mb-0 w-100" href="/Dashboard" type="button">Go !</a>
     </div>
   </aside>
   <main class="main-content position-relative border-radius-lg ">
@@ -169,9 +172,8 @@
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
             <li class="breadcrumb-item text-sm"><a class="opacity-5 text-white" href="javascript:;">Pages</a></li>
-            <li class="breadcrumb-item text-sm text-white active" aria-current="page">Tables</li>
+            <li class="breadcrumb-item text-sm text-white active" aria-current="page">Dashboard</li>
           </ol>
-          <h6 class="font-weight-bolder text-white mb-0">Tables</h6>
         </nav>
         <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
           <div class="ms-md-auto pe-md-3 d-flex align-items-center">

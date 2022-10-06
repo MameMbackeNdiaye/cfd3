@@ -31,12 +31,13 @@ const props = defineProps({
 
 });
 const form = useForm({
+    cagnottes_id:'',
     nom: '',
     themes_id: '',
     budjet: '',
     description: '',
     users_id: props.user.id,
-    cagnottes_id:'',
+    
 });
 
 const submit = () => {

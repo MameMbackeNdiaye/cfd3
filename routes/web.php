@@ -4,7 +4,7 @@ use App\Http\Controllers\Admins\AdminDashboardController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\RedirectAuthenticatedUsersController;
-
+use App\Models\Projet;
 use Inertia\Inertia;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
@@ -30,10 +30,9 @@ Route::get('/', function () {
 
 Route::get('/projets', 'App\Http\Controllers\ProjetController@index')->name('projets.index');    
 Route::get('/projets/{id}', 'App\Http\Controllers\ProjetController@show')->name('projets.show');    
-Route::get('/projets/{id}/addFinance', 'App\Http\Controllers\ProjetController@addFinance')->name('projets.addFinace');    
 Route::get('/addProject', 'App\Http\Controllers\ProjetController@addProject')->name('projets.addProject');    
-Route::get('/addProject/addProjectForm', 'App\Http\Controllers\ProjetController@addProjectForm')->name('projets.addProjectForm');    
 Route::post('/addProject/store', 'App\Http\Controllers\ProjetController@addProjectStore')->name('projets.addProjectStore');    
+Route::post('/financements/store', 'App\Http\Controllers\ProjetController@addFinancementStore')->name('projets.addFinancementStore');    
 
 
 
@@ -42,7 +41,9 @@ Route::group([
     config('jetstream.auth_session'),
     'verified',
 ], function (){
-// Route a proteger
+    Route::get('/addProject/addProjectForm', 'App\Http\Controllers\ProjetController@addProjectForm')->name('projets.addProjectForm');    
+    Route::get('/projets/{id}/addFinance', 'App\Http\Controllers\ProjetController@addFinance')->name('projets.addFinace');    
+
 });
 
 
@@ -70,6 +71,9 @@ Route::prefix('admin')->middleware(['auth:sanctum','verified'])->name('admin.')-
         Route::put('/update',[App\Http\Controllers\Admins\GestionnaireController::class,'update'])->name('update');
         Route::get('/status-edit/{id}',[App\Http\Controllers\Admins\GestionnaireController::class,'editstatus'])->name('editstatus');
         Route::put('/status-update/{id}',[App\Http\Controllers\Admins\GestionnaireController::class,'updatestatus'])->name('updatestatus');
+        Route::get('/gestionnaires-edit/{id}',[App\Http\Controllers\Admins\GestionnaireController::class,'gestionnairesedit'])->name('gestionnairesedit');
+        Route::put('/gestionnaires-update/{id}',[App\Http\Controllers\Admins\GestionnaireController::class,'gestionnairesupdate'])->name('gestionnairesupdate');
+        
         //Route::delete('/delete/{id}',[App\Http\Controllers\Admins\RoleController::class, 'delete'])->name('delete');
     });
 
@@ -91,7 +95,7 @@ Route::prefix('admin')->middleware(['auth:sanctum','verified'])->name('admin.')-
         Route::get('/',[App\Http\Controllers\Admins\AdminFinancementController::class,'index'])->name('index');
         Route::get('/modif/{id}',[App\Http\Controllers\Admins\AdminProjetController::class,'edit'])->name('edit');
         Route::put('/update/{id}',[App\Http\Controllers\Admins\AdminProjetController::class,'update'])->name('update');
-        Route::post('/store',[App\Http\Controllers\Admins\GestionnaireController::class,'store'])->name('store');
+        Route::post('/store',[App\Http\Controllers\Admins\AdminFinancementController::class,'store'])->name('store');
         Route::get('/edit/{id}',[App\Http\Controllers\Admins\GestionnaireController::class,'edit'])->name('edit');
         //Route::put('/update',[App\Http\Controllers\Admins\GestionnaireController::class,'update'])->name('update');
         Route::get('/status-edit/{id}',[App\Http\Controllers\Admins\GestionnaireController::class,'editstatus'])->name('editstatus');
@@ -107,7 +111,8 @@ Route::middleware([
     'verified',
 ])->group(function () {
     Route::get('/dashboard', function () {
-        return Inertia::render('Dashboard');
+        $projets = Projet::withCount('financement')->get();
+        return Inertia::render('Dashboard',['projets' => $projets]);
     })->name('dashboard');
     
     Route::get("/redirectAuthenticatedUsers", [App\Http\Controllers\Auth\RedirectAuthenticatedUsersController::class, "home"]);
