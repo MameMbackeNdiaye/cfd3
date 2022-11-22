@@ -53,7 +53,7 @@ export default {
           <div class=" scroll-pl-6 pt-12 text-2xl text-indigo-500 font-bold md:text-2xl">{{ projet.nom }}</div>
             <div class="flex justify-center py-4 px-1 max-w-lg mx-auto">
               <div class="py-8 px-8 max-w-sm mx-auto bg-white rounded-xl shadow-lg space-x-4 sm:py-4 sm:flex sm:items-center sm:space-y-0 sm:space-x-6 container">
-                <div class="text-center sm:text-left">
+                <div class="text-center w-50 sm:text-left">
                   <div class="space-y-0.5">
                     <img class="block mx-auto rounded-xl shadow-lg" src="https://images.unsplash.com/photo-1523132797263-747d5d0dbbb3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80" alt="image projet">
                     <div>

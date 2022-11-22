@@ -26,8 +26,9 @@ class RoleController extends Controller
         ]);
         */
         $roles = Role::all();
-        $users = User::all();
-        return view('admin.role', ['roles' => $roles, 'users' => $users]);
+        $user = User::all();
+       $users = User::paginate(5);
+        return view('admin.role', ['roles' => $roles, 'users' => $users,'user' => $user]);
 
     }
 

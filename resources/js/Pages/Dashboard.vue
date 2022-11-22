@@ -26,10 +26,10 @@ export default defineComponent({
 </script>
 
 <template>
-    <AppLayout data-theme="garden">
+    <AppLayout data-theme="dark">
         <template #header>
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                <div class="hero  shadow-sm border border-none" style="background-image: url(https://images.unsplash.com/photo-1547187028-d29fa38aeb91?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1261&q=80);">
+                <div  class="hero  shadow-sm border border-none" style="background-image: url(https://images.unsplash.com/photo-1547187028-d29fa38aeb91?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1261&q=80);">
                   <div class="hero-overlay bg-opacity-60"></div>
                   <div class="hero-content text-center text-neutral-content">
                     <div class="max-w-md">

@@ -15,9 +15,11 @@ class AdminProjetController extends Controller
     public function index()
     {
         //return Inertia::render('Admin/Dashboard');
-        $projets = Projet::all();
+        $projets = Projet::paginate(5);
+        $projet = Projet::all();
         $users = User::all();
-        return view('admin.projets.gestion-projet', ['projets' => $projets, 'users' => $users]);
+        $cagnottes=Cagnotte::all();
+        return view('admin.projets.gestion-projet', ['projet' => $projet,'projets' => $projets, 'users' => $users,'cagnottes'=>$cagnottes]);
     }
 
     public function edit($id)
@@ -34,10 +36,11 @@ class AdminProjetController extends Controller
     {
         $updateprojets = Projet::findOrFail($id);
         $updateprojets->status = $request->input('status');
-        $updateprojets->cagnottes_id = $request->input('cagnottes_id');
+        $updateprojets->cagnottes_id = $request->input('cagnotte');
         $updateprojets->update();
 
-        return redirect('/admin/projets')->with('status', 'le projet a ete valide avec succes');
+
+        return redirect('/admin/projets')->with('status', 'succes');
     }
 
 }

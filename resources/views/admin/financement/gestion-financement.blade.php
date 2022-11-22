@@ -10,7 +10,13 @@
         <div class="col-12 mb-20">
           <div class="card mb-4">
             <div class="card-header pb-0">
-              <h6 class="text-primary font-bold">Financements a enregistrer</h6>
+              <h6 class="text-secondary font-bold"style="color:#492E34;">Financements a enregistrer</h6>
+              @if (session('status'))
+                        <div class="alert alert-success text-light font-bold" role="alert">
+                            {{ session('status') }}
+                        </div>
+            @endif
+
             </div>
             <div class="card-body px-0 pt-0 pb-2">
               <div class="table-responsive p-0">
@@ -31,7 +37,7 @@
                       <td>
                         <div class="d-flex px-2 py-1">
                           <div class="m-2">
-                            <i class="ni ni-curved-next text-warning text-sm opacity-10"></i>
+                            <i style="color:#492E34;" class="ni ni-curved-next text-sm opacity-10"></i>
                           </div>
                           <div class="d-flex flex-column justify-content-center">
                             <h6 class="mb-0 text-sm">{{$f->status}}..</h6>
@@ -52,7 +58,7 @@
                       </td>
                       <td class="align-middle">
                       <div class="col-6 text-end  justify-center ml-80">
-                        <a href="{{url('admin/financements/modif/'.$f->id)}}" class="btn bg-gradient-success text-white mb-0" ><i class="fas fa-plus"></i>&nbsp;&nbsp;Enregistrer</a>
+                        <a style="background-color:#492E34;" href="{{url('admin/financements/modif/'.$f->id)}}" class="btn text-white mb-0" ><i class="fas fa-plus"></i>&nbsp;&nbsp;Enregistrer</a>
                       </div>
                       </td>
                     </tr>
@@ -138,7 +144,7 @@
                       <h6 class="mb-0">Payment Method</h6>
                     </div>
                     <div class="col-6 text-end">
-                      <a class="btn bg-gradient-dark mb-0" href="javascript:;"><i class="fas fa-plus"></i>&nbsp;&nbsp;Nouveau Moyen de Paiement</a>
+                      <a style="background-color:#492E34;" class="btn  text-white mb-0" href="javascript:;"><i class="fas fa-plus"></i>&nbsp;&nbsp;Nouveau Moyen de Paiement</a>
                     </div>
                   </div>
                 </div>

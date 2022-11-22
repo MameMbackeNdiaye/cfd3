@@ -10,7 +10,7 @@
     <div class="col-md-12">
         <div class="card">
             <div class="card-header">
-                <h4 class="card-title text-primary">Enregistrement d'un investissement</h4>
+                <h4 class="card-title" style="color:#492E34;">Enregistrement d'un investissement</h4>
             
                 <form action="{{ url('/admin/financements/update/'. $editfinancement->id) }}" method="post">
                     {{ csrf_field() }}
@@ -26,7 +26,7 @@
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="example-text-input" class="form-control-label">Somme cagnotte</label>
+                                <label for="example-text-input" class="form-control-label">Somme cagnotte apres financement</label>
                                 <input value="{{$editfinancement->projet->cagnotte->somme + $editfinancement->sommeFinancee}}" readonly class="form-control" name="somme" type="number">
                             </div>
                         </div>

@@ -76,7 +76,7 @@ const submit = () => {
                     <select v-model="form.themes_id" class="w-100 bg-gray-100 border border-gray-200 text-black text-xs py-3 px-4 pr-8 mb-3 rounded" id="themes_id">
                         <option value="1">Technologie</option>
                         <option value="2">Agriculture</option>
-                        <option value="3">Energie/Ressources naturelles</option>
+                        <option value="4">Energie/Ressources naturelles</option>
                     </select>
                     </div>
                 </div>

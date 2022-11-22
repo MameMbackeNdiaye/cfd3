@@ -12,8 +12,7 @@
           <div class="card m-4 ">
             <div class="card-header pb-0">
               <div class="d-flex align-items-center">
-                <p class="mb-0">Edit Profile</p>
-                <button class="btn btn-primary btn-sm ms-auto">Settings</button>
+                <p class="mb-0" style="color:#492E34;">Edit Profile</p>
               </div>
             </div>
             <div class="card-body">

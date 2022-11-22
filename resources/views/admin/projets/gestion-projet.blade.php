@@ -13,7 +13,7 @@
         <div class="col-12 mb-20">
           <div class="card mb-4">
             <div class="card-header pb-0">
-              <h6 class="text-primary font-bold">Liste des projets en attente de validation</h6>
+              <h6 class=" font-bold" style="color:#492E34;">Liste des projets en attente de validation</h6>
             </div>
             <div class="card-body px-0 pt-0 pb-2">
               <div class="table-responsive p-0">
@@ -27,14 +27,14 @@
                     </tr>
                   </thead>
                   <tbody>
-                  @foreach ($projets as $p)
+                  @foreach ($projet as $p)
                     @if ($p->status=="en attente")
                         
                     <tr>
                       <td>
                         <div class="d-flex px-2 py-1">
                           <div class="m-2">
-                            <i class="ni ni-ungroup text-warning text-sm opacity-10"></i>
+                            <i style="color:#492E34;" class="ni ni-ungroup text-sm opacity-10"></i>
                           </div>
                           <div class="d-flex flex-column justify-content-center">
                             <h6 class="mb-0 text-sm">{{$p->status}}..</h6>
@@ -51,7 +51,7 @@
                       </td>
                       <td class="align-middle">
                       <div class="col-6 text-end  justify-center ml-80">
-                        <a href="{{url('admin/projets/modif/'.$p->id)}}" class="btn bg-gradient-warning text-white mb-0" ><i class="fas fa-plus"></i>&nbsp;&nbsp;Valider ce projet</a>
+                        <a style="background-color:#492E34;" href="{{url('admin/projets/modif/'.$p->id)}}" class="btn  text-white mb-0" ><i class="fas fa-plus"></i>&nbsp;&nbsp;Valider ce projet</a>
                       </div>
                       </td>
                     </tr>
@@ -70,7 +70,13 @@
         <div class="col-12">
           <div class="card mb-4">
             <div class="card-header pb-0">
-              <h6 class='text-xl text-primary font-weight-bold' >Informations projets</h6>
+              <h6 class='text-xl font-weight-bold' style="color:#492E34;" >Informations projets</h6>
+                @if (session('status'))
+                          <div class="alert alert-success text-light font-bold" role="alert">
+                              {{ session('status') }}
+                          </div>
+              @endif
+
             </div>
             <div class="card-body px-0 pt-0 pb-2">
               <div class="table-responsive p-0">
@@ -90,7 +96,7 @@
                       <td>
                         <div class="d-flex px-2">
                           <div>
-                          <i class="ni ni-bold-right m-4 text-warning text-md opacity-10"></i>
+                          <i style="color:#492E34;" class="ni ni-bold-right m-4 text-md opacity-10"></i>
                           </div>
                           <div class="my-auto">
                             <h6 class="mb-0 text-sm">{{$p->nom}}</h6>
@@ -144,10 +150,20 @@
                       </td>
                       <td class="align-middle text-center">
                         <div class="d-flex align-items-center justify-content-center">
-                          <span class="me-2 text-xs font-weight-bold">0%</span>
+                        @foreach ($cagnottes as $c)
+                                @if ($c->id== $p->cagnottes_id)
+                                <p class="text-sm p-2 mt-2">{{(int)($c->somme * 100 /$p->budjet)}} %</p>
+                                @endif
+                          @endforeach
                           <div>
                             <div class="progress">
-                              <div class="progress-bar bg-gradient-info" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 1%;"></div>
+                              @foreach ($cagnottes as $c)
+                                @if ($c->id== $p->cagnottes_id)
+                                
+                                <progress class="progress progress-primary w-56 rounded-xl shadow-lg " value="{{$c->somme * 100 /$p->budjet}}" max="100"></progress>
+                                @endif
+                          @endforeach
+
                             </div>
                           </div>
                         </div>
@@ -158,6 +174,11 @@
                 </table>
               </div>
             </div>
+            <div class="btn-group">
+                <button class="btn">{{$projets->render()}}</button>
+          </div>
+
+
           </div>
         </div>
       </div>
@@ -168,7 +189,7 @@
     <div class="col-md-7 mt-4">
           <div class="card">
             <div class="card-header pb-0 px-3">
-              <h6 class="mb-0">Information Porteurs de projets</h6>
+              <h6 class="mb-0" style="color:#492E34;">Information Porteurs de projets</h6>
             </div>
             <div class="card-body pt-4 p-3">
               <ul class="list-group">
@@ -225,7 +246,7 @@
                     <h6 class="mb-0">Flux des d'investisseurs</h6>
                 </div>
                         <div class="col-md-6 d-flex justify-content-end align-items-center">
-                            <i class="far fa-calendar-alt me-2"></i>
+                            <i style="color:#492E34;" class="far fa-calendar-alt me-2"></i>
                             <small>01 - 30 Septembre 2022</small>
                         </div>
                     </div>
@@ -304,9 +325,4 @@
 @endsection
 
 @section('scripts')
-    <script>
-    $(document).ready(function(){
-        $('#datatable').DataTable();
-    });
-</script>
 @endsection

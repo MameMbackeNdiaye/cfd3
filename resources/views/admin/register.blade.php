@@ -11,7 +11,7 @@
         <div class="col-lg-6 mb-lg-0 mb-4 w-50">
           <div class="card mb-4">
             <div class="card-header pb-0">
-              <h6 class="text-primary font-bold">Tableau des Roles</h6>
+              <h6 class=" font-bold" style="color:#492E34;">Tableau des Roles</h6>
             </div>
               <div class="card-body px-0 pt-0 pb-2">
                 <div class="table-responsive p-0">
@@ -28,7 +28,7 @@
                         <td>
                             <div class="px-2 py-1">
                             <div>
-                                <i class="ni ni-button-play text-warning text-md opacity-10"></i>
+                                <i style="color:#492E34;" class="ni ni-button-play text-md opacity-10"></i>
                             </div>
                                 <h6 class="mb-0 text-sm">{{$role->nom}}</h6>
                                 <p class="text-xs text-secondary mb-0">gestionnaire</p>
@@ -59,7 +59,7 @@
         <div class="container-fluid col-lg-6 mb-lg-0 mb-4">
                 <div class="card mb-4 mt-4">
                     <div class="card-header pb-0">
-                    <h6 class="text-primary font-bold">Roles des Gestionnaires</h6>
+                    <h6 class=" font-bold" style="color:#492E34;">Roles des Gestionnaires</h6>
                     @if (session('status'))
                                 <div class="alert alert-success text-light font-bold" role="alert">
                                     {{ session('status') }}
@@ -82,7 +82,7 @@
                             <td>
                                 <div class=" d-flex px-4 py-2 mt-2 ">
                                 <div>
-                                    <i class="ni ni-single-02 text-warning"></i>
+                                    <i style="color:#492E34;" class="ni ni-single-02 "></i>
                                 </div>
                                 <div class="d-flex mx-4 flex-column justify-content-center">
                                     <h6 class="mb-0 text-sm">{{$user->name}}</h6>
@@ -115,10 +115,10 @@
             @if(Auth::user()->role_id == 1)
             <div class="card">
                 <div class="card-header pb-0 px-3 ">
-                    <h6 class="text-primary font-bold">Informations des Gestionnaires</h6>
+                    <h6 class=" font-bold" style="color:#492E34;">Informations des Gestionnaires</h6>
                 </div>
                 <div class="col-6 mt-4 mx-auto ml-8 ">
-                    <a class="btn bg-dark text-white mb-0" href="{{ url('/admin/gestionnaires/create') }}"><i class="fas fa-plus"></i>&nbsp;&nbsp;nouveau gestionnaire</a>
+                    <a style="background-color:#492E34;" class="btn text-white mb-0" href="{{ url('/admin/gestionnaires/create') }}"><i class="fas fa-plus"></i>&nbsp;&nbsp;nouveau gestionnaire</a>
                 </div>
                 <div class="fixed z-10 inset-0 overflow-y-auto ease-out duration-400" >
                     <div class="card-body pt-0 p-3" >
@@ -154,7 +154,7 @@
         <div class="col-xl-4 mt-12 w-48">
                     <div class="card">
                         <div class="card-header pb-0 p-3">
-                            <h6 class="text-primary font-bold pt-0">Taches Utilisateurs</h6>
+                            <h6 class=" font-bold pt-0" style="color:#492E34;">Taches Utilisateurs</h6>
                         </div>
                         <div class="card-body p-40">
                         @foreach ($users as  $user)
@@ -163,7 +163,7 @@
                             <li class="list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg" v-if="user.is_admin == 1">
                             <div class="d-flex align-items-center">
                                 <div class="icon icon-shape icon-sm me-3 bg-gradient-dark shadow text-center">
-                                <i class="ni ni-mobile-button text-white opacity-10"></i>
+                                <i  class="ni ni-mobile-button text-white  opacity-10"></i>
                                 </div>
                                 <div class="d-flex flex-column" >
                                 <h6 class="mb-1 text-slate-600 text-sm font-bold" >{{$user->name}}</h6>
@@ -188,5 +188,7 @@
 
 
 @section('scripts')
+
+
 
 @endsection

@@ -16,7 +16,7 @@
           </div>
           <div class="col-auto my-auto">
             <div class="h-100">
-              <h5 class="mb-1 text-primary">
+              <h5 class="mb-1" style="color:#492E34;">
                 Profil Utilisateur
               </h5>
               <p class="mb-0 font-weight-bold text-sm">
@@ -33,8 +33,7 @@
           <div class="card">
             <div class="card-header pb-0">
               <div class="d-flex align-items-center">
-                <p class="mb-0">Informations du profil</p>
-                <button class="btn btn-primary btn-sm ms-auto">Détails</button>
+                <p class="mb-0" style="color:#492E34;">Informations du profil</p>
               </div>
             </div>
             <div class="card-body">
@@ -83,7 +82,7 @@
                         <div class="col-md-12">
                         <div class="form-group">
                             <label for="example-text-input" class="form-control-label">About me</label>
-                            <input class="form-control" type="text" value="A beautiful Dashboard for Bootstrap 5. It is Free and Open Source.">
+                            <input class="form-control" type="text" value="Je suis Gestionnaire de la plateforme ToGether">
                         </div>
                         </div>
                     </div>
@@ -109,13 +108,13 @@
             </div>
             <div class="card-header text-center border-0 pt-0 pt-lg-4 pb-4 pb-lg-3">
               <div class="justify-content-between">
-                <h5>
+                <h5 style="color:#492E34;">
                     {{Auth::user()->name}}
                 </h5>
                 <div class="h6 font-weight-300">
                     <span class="font-weight-light">{{Auth::user()->email}}</span>
                 </div>
-                <a href="javascript:;" class="btn btn-sm btn-dark mb-0 d-none d-lg-block"><i class="ni ni-settings m-2 text-white  w-10 text-sm opacity-10"></i>Modifier la photo de profil</a>
+                <a href="javascript:;" style=" background-color:#492E34;" class="btn btn-sm text-white mb-0 d-none d-lg-block"><i class="ni ni-settings m-2 text-white  w-10 text-sm opacity-10"></i>Modifier la photo de profil</a>
               </div>
             </div>
             <div class="card-body pt-0">

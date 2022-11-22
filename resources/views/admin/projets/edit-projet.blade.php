@@ -10,7 +10,7 @@
     <div class="col-md-12">
         <div class="card">
             <div class="card-header">
-                <h4 class="card-title text-primary">Validation de projet</h4>
+                <h4 class="card-title" style="color:#492E34;">Validation de projet</h4>
             
                 <form action="{{ url('/admin/projets/update/'. $editprojet->id) }}" method="post">
                     {{ csrf_field() }}
@@ -35,7 +35,7 @@
                                 <label for="example-text-input" class="form-control-label">Lancer la cagnotte</label>
                                 @foreach ($cagnottes as  $c)
                                     @if ($c->created_at==$editprojet->created_at)
-                                        <input class="form-control" readonly value="{{$c->id}}" name="cagnottes_id" type="text">
+                                        <input class="form-control" readonly value="{{$c->id}}" name="cagnotte" type="text">
                                     @endif
                                 @endforeach
                             </div>
@@ -43,7 +43,7 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="example-text-input" class="form-control-label">Description</label>
-                                <textarea class="form-control" rows="4" cols="5"  name="description" >{{$editprojet->description}}</textarea>
+                                <textarea class="form-control" readonly rows="4" cols="5"  name="description" >{{$editprojet->description}}</textarea>
                             </div>
                         </div>
                         <div class="col-md-6">

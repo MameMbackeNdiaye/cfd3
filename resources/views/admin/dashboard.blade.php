@@ -15,7 +15,7 @@
                 <div class="col-8">
                   <div class="numbers">
                     <p class="text-sm mb-0 text-uppercase font-weight-bold">Somme Financée</p>
-                    <h5 class="font-weight-bolder">
+                    <h5 class="font-weight-bolder" style="color:#492E34;">
                       5,300,000 Fcfa
                     </h5>
                   </div>
@@ -36,7 +36,7 @@
                 <div class="col-8">
                   <div class="numbers">
                     <p class="text-sm mb-0 text-uppercase font-weight-bold">Nombre d'utilisateur</p>
-                    <h5 class="font-weight-bolder">
+                    <h5 class="font-weight-bolder" style="color:#492E34;">
                       +2,300 
                     </h5>
                   </div>
@@ -57,7 +57,7 @@
                 <div class="col-8">
                   <div class="numbers">
                     <p class="text-sm mb-0 text-uppercase font-weight-bold">Nombre de Projets achevés</p>
-                    <h5 class="font-weight-bolder">
+                    <h5 class="font-weight-bolder" style="color:#492E34;">
                       +3,462
                     </h5>
                   </div>
@@ -78,7 +78,7 @@
                 <div class="col-8">
                   <div class="numbers">
                     <p class="text-sm mb-0 text-uppercase font-weight-bold">Commissions </p>
-                    <h5 class="font-weight-bolder">
+                    <h5 class="font-weight-bolder" style="color:#492E34;">
                       2,103,430 Fcfa
                     </h5>
                   </div>
@@ -97,7 +97,7 @@
         <div class="col-md-7 mt-4">
           <div class="card">
           <div class="card-header pb-0 p-3">
-            <h6 class="text-primary font-bold pt-0">Taches Utilisateurs</h6>
+            <h6 class=" font-bold pt-0" style="color:#492E34;">Taches Utilisateurs</h6>
           </div>
             <div class="card-body p-40">
                         @foreach ($users as  $user)
@@ -128,7 +128,7 @@
                         <div class="card-header pb-0 px-3">
                             <div class="row">
                                 <div class="col-md-6">
-                                    <h6 class="mb-0">Flux des d'investisseurs</h6>
+                                    <h6 class="mb-0" style="color:#492E34;">Flux des d'investisseurs</h6>
                                 </div>
                                 <div class="col-md-6 d-flex justify-content-end align-items-center">
                                     <i class="far fa-calendar-alt me-2"></i>
@@ -211,7 +211,7 @@
         <div class="col-12">
           <div class="card mb-4">
             <div class="card-header pb-0">
-              <h6 class='text-xl text-primary font-weight-bold' >Informations projets</h6>
+              <h6 class='text-xl font-weight-bold' style="color:#492E34;" >Informations projets</h6>
             </div>
             <div class="card-body px-0 pt-0 pb-2">
               <div class="table-responsive p-0">
@@ -231,7 +231,7 @@
                       <td>
                         <div class="d-flex px-2">
                           <div>
-                          <i class="ni ni-bold-right m-4 text-warning text-md opacity-10"></i>
+                          <i style="color:#492E34;" class="ni ni-bold-right m-4 text-md opacity-10"></i>
                           </div>
                           <div class="my-auto">
                             <h6 class="mb-0 text-sm">{{$p->nom}}</h6>
@@ -284,11 +284,21 @@
                         <span class="text-sm font-weight-bold">{{$p->status}}</span>
                       </td>
                       <td class="align-middle text-center">
-                        <div class="d-flex align-items-center justify-content-center">
-                          <span class="me-2 text-xs font-weight-bold">0%</span>
+                      <div class="d-flex align-items-center justify-content-center">
+                        @foreach ($cagnottes as $c)
+                                @if ($c->id== $p->cagnottes_id)
+                                <p class="text-sm p-2 mt-2">{{(int)($c->somme * 100 /$p->budjet)}} %</p>
+                                @endif
+                          @endforeach
                           <div>
                             <div class="progress">
-                              <div class="progress-bar bg-gradient-info" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 1%;"></div>
+                              @foreach ($cagnottes as $c)
+                                @if ($c->id== $p->cagnottes_id)
+                                
+                                <progress class="progress progress-primary w-56 rounded-xl shadow-lg " value="{{$c->somme * 100 /$p->budjet}}" max="100"></progress>
+                                @endif
+                          @endforeach
+
                             </div>
                           </div>
                         </div>
@@ -299,6 +309,10 @@
                 </table>
               </div>
             </div>
+            <div class="btn-group">
+                <button class="btn">{{$projets->render()}}</button>
+          </div>
+
           </div>
         </div>
       </div>

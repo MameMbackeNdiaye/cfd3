@@ -35,9 +35,9 @@
   <link id="pagestyle" href="/assets/css/argon-dashboard.css?v=2.0.4" rel="stylesheet" />
 </head>
 
-<body class="g-sidenav-show   bg-gray-100">
+<body  style="background-color: #E4E4E4;" class="g-sidenav-show ">
 
-  <div class="min-height-300 bg-dark position-absolute w-100"></div>
+  <div style="background-color: #BEBCC8;" class="min-height-300  position-absolute w-100"></div>
   <aside class="sidenav bg-white navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-4 " id="sidenav-main">
   <div class="sidenav-header mx-auto ml-6">
       <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav"></i>
@@ -52,7 +52,7 @@
         <li class="nav-item ">
           <a class="nav-link {{ 'admin/dashboard' == request()->path() ? 'active' : '' }}" href="/admin/dashboard">
             <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-              <i class="ni ni-tv-2 text-primary text-sm opacity-10"></i>
+              <i style="color:#492E34;" class="ni ni-tv-2  text-sm opacity-10"></i>
             </div>
             <span class="nav-link-text ms-1">Dashboard</span>
           </a>
@@ -60,7 +60,7 @@
         <li class="nav-item">
           <a class="nav-link {{ 'admin/gestionnaires' == request()->path() ? 'active' : '' }}" href="/admin/gestionnaires">
             <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-              <i class="ni ni-circle-08 text-primary text-sm opacity-10"></i>
+              <i style="color:#492E34;" class="ni ni-circle-08 text-sm opacity-10"></i>
             </div>
             <span class="nav-link-text ms-1">Utilisateurs</span>
           </a>
@@ -69,7 +69,7 @@
         <li class="nav-item">
           <a class="nav-link {{ 'admin/financements' == request()->path() ? 'active' : '' }}" href="/admin/financements">
             <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-              <i class="ni ni-money-coins m-1 text-success text-md opacity-10"></i>
+              <i style="color:#492E34;" class="ni ni-credit-card m-1  text-sm opacity-10"></i>
             </div>
             <span class="nav-link-text ms-1">Gestion Financements</span>
           </a>
@@ -79,7 +79,7 @@
         <li class="nav-item">
           <a class="nav-link {{ 'admin/projets' == request()->path() ? 'active' : '' }}" href="/admin/projets">
             <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-              <i class="ni ni-ungroup text-info  text-sm opacity-10"></i>
+              <i style="color:#492E34;" class="ni ni-ungroup   text-sm opacity-10"></i>
             </div>
             <span class="nav-link-text ms-1">Projets</span>
           </a>
@@ -89,7 +89,7 @@
         <li class="nav-item ">
           <a class="nav-link {{ 'admin/roles' == request()->path() ? 'active' : '' }}" href="/admin/roles">
             <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-              <i class="ni ni-world-2 text-warning text-sm opacity-10"></i>
+              <i style="color:#492E34;" class="ni ni-world-2  text-sm opacity-10"></i>
             </div>
             <span class="nav-link-text ms-1">Roles</span>
           </a>
@@ -101,7 +101,7 @@
         <li class="nav-item">
           <a class="nav-link {{ 'admin/profil' == request()->path() ? 'active' : '' }}" href="/admin/gestionnaires/gestionnaires-edit/{{Auth::user()->id}}">
             <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-              <i class="ni ni-single-02 text-dark text-sm opacity-10"></i>
+              <i style="color:#492E34;" class="ni ni-single-02 text-sm opacity-10"></i>
             </div>
             <span class="nav-link-text ms-1">Profile</span>
           </a>
@@ -110,7 +110,7 @@
     </div>
     <div class="sidenav-footer mx-3 ">
       <div class="card card-plain shadow-none" id="sidenavCard">
-        <img class="w-50 mx-auto" src="/assets/img/illustrations/icon-documentation.svg" alt="sidebar_illustration">
+        <img class="w-50 mx-auto" src="https://img.freepik.com/free-vector/business-man-working-hard-stock-financial-trade-market-diagram-vector-illustration-flat-design_1150-39773.jpg?w=740&t=st=1665246487~exp=1665247087~hmac=e07ae950f2a43deada93bca0f108e6eb7c9afa144be69c6dd9f98a99c4a525b5" alt="sidebar_illustration">
         <div class="card-body text-center p-3 w-100 pt-0">
           <div class="docs-info">
             <h6 class="mb-0">Aller sur la plateforme publique ?</h6>
@@ -118,7 +118,7 @@
           </div>
         </div>
       </div>
-      <a class="btn btn-dark btn-sm mb-0 w-100" href="/Dashboard" type="button">Go !</a>
+      <a style="background-color:#492E34;" class="btn btn-primary opacity-20 btn-sm mb-0 w-100" href="/Dashboard" type="button">Go !</a>
     </div>
   </aside>
   <main class="main-content position-relative border-radius-lg ">
@@ -127,10 +127,9 @@
       <div class="container-fluid py-1 px-3">
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
-            <li class="breadcrumb-item text-sm"><a class="opacity-5 text-white" href="javascript:;">Pages</a></li>
-            <li class="breadcrumb-item text-sm text-white active" aria-current="page">Tables</li>
+            <li style="color:#492E34;" class="breadcrumb-item text-sm"><a class="opacity-5 " href="javascript:;">Pages</a></li>
+            <li style="color:#492E34;" class="breadcrumb-item text-sm  active" aria-current="page">Dashbord</li>
           </ol>
-          <h6 class="font-weight-bolder text-white mb-0">Tables</h6>
         </nav>
         <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
           <div class="ms-md-auto pe-md-3 d-flex align-items-center">
@@ -141,7 +140,7 @@
           </div>
           <ul class="navbar-nav justify-content">
             <li class="nav-item dropdown">
-                                  <a id="navbarDropdown" class=" text-light nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                  <a style="color:#492E34;" id="navbarDropdown" class="  nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                   <i class="fa fa-user"></i>  
                                   <h8 class="">{{ Auth::user()->name }}</h8>
                                   </a>

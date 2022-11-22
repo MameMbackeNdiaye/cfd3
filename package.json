@@ -28,6 +28,8 @@
         "alpinejs": "^3.10.3",
         "awesome-vue-star-rating": "^1.0.9",
         "daisyui": "^2.25.0",
+        "datatables.net": "^1.12.1",
+        "datatables.net-dt": "^1.12.1",
         "flowbite": "^1.5.3",
         "laravel-vue-pagination": "^3.0.0",
         "vue-awesome-paginate": "^1.0.23",

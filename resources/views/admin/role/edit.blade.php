@@ -14,7 +14,7 @@
             {{ method_field('PUT') }}
 
                 <div class="card-header rounded-sm margin-20 pb-0 px-3">
-                <h4 class="text-primary mb-4">Modification de role</h4>
+                <h4 class=" mb-4" style="color:#492E34;">Modification de role</h4>
                 </div>
                 <div class="form-group col md-6">
                     <label for="example-text-input " class="form-control-label text-lg m-4">Nom:</label>

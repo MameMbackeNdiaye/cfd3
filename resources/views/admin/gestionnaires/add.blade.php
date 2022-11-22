@@ -13,8 +13,7 @@ ajout
           <div class="card m-4 ">
             <div class="card-header pb-0">
               <div class="d-flex align-items-center">
-                <p class="mb-0">Formulaire d'ajout</p>
-                <button class="btn btn-primary btn-sm ms-auto">Settings</button>
+                <p class="mb-0" style="color:#492E34;">Formulaire d'ajout</p>
               </div>
             </div>
             <div class="card-body">
@@ -22,7 +21,8 @@ ajout
                     {{ csrf_field() }}
                     {{ method_field('POST') }}
 
-                    <p class="text-uppercase text-sm">User Information</p>
+                    <p class="text-uppercase text-secondary text-sm">User Information</p>
+                    
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
