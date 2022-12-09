@@ -44,6 +44,13 @@
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
+                                <label for="example-text-input" class="form-control-label">Code Investisseur</label>
+                                <input value="#{{$editfinancement->users_id}}" readonly class="form-control" name="name" type="text">
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group">
                                 <label for="example-text-input" class="form-control-label">Action</label>
                                 <input class="form-control" readonly value="enregistre" name="status" type="text">
                             </div>

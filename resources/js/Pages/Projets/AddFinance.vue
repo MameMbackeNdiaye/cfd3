@@ -20,7 +20,8 @@ const props = defineProps({
 
    data() {
     return {
-      projetAddProject: this.projet
+      projetAddProject: this.projet,
+      projetAddUser: this.user
     }
   },
   daisyui: {
@@ -60,7 +61,12 @@ const submit = () => {
                     <div>
                         <input readonly="readonly" v-model="form.projet_id" class="w-full text-white font-bold bg-blue-900 border border-none rounded py-3 px-4 mb-3"  id="projet_id" type="number"  placeholder="">
                     </div>
-
+                     <label class="uppercase tracking-wide text-black text-xs font-bold mb-2" for="users_id">
+                    Utilisateur #
+                    </label>
+                    <div>
+                        <input readonly="readonly" v-model="form.users_id" class="w-full text-white font-bold bg-blue-900 border border-none rounded py-3 px-4 mb-3"  id="users_id" type="number"  placeholder="">
+                    </div>
             <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 flex flex-col">
               <div class="-mx-3 md:flex mb-6">
                 <div class="md:w-1/2 px-3 mb-6 md:mb-0">

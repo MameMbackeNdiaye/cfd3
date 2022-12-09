@@ -26,10 +26,10 @@ class AdminFinancementController extends Controller
     {
         $editfinancement= Financement::findOrFail($id);
         $projets = Projet::all();
-        $users = User::all();
+        $user = User::all();
         $cagnottes = Cagnotte::all();
         
-        return view('admin.financement.edit-financement', ['cagnottes'=>$cagnottes,'projets'=>$projets,'users'=>$users])
+        return view('admin.financement.edit-financement', ['cagnottes'=>$cagnottes,'projets'=>$projets,'users'=>$user])
             ->with('editfinancement',$editfinancement);
         
     }
@@ -37,9 +37,10 @@ class AdminFinancementController extends Controller
     public function update(Request $request, $id)
     {
         $update = Financement::findOrFail($id);
+        error_log($update->users_id."======================================");
         $update->status = $request->input('status');
         $update->projet->cagnotte->somme = $request->input('somme');
-        error_log($update->projet->cagnotte->somme."======================================");
+        $update->users->soldeInvestissement = $request->input('somme');
         $update->update();
         $update->projet->cagnotte->update();
 

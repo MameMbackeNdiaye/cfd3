@@ -6,6 +6,7 @@ import SectionBorder from '@/Components/SectionBorder.vue';
 import TwoFactorAuthenticationForm from '@/Pages/Profile/Partials/TwoFactorAuthenticationForm.vue';
 import UpdatePasswordForm from '@/Pages/Profile/Partials/UpdatePasswordForm.vue';
 import UpdateProfileInformationForm from '@/Pages/Profile/Partials/UpdateProfileInformationForm.vue';
+import GestionCompte from '@/Pages/Profile/Partials/GestionCompte.vue';
 
 defineProps({
     confirmsTwoFactorAuthentication: Boolean,
@@ -31,6 +32,12 @@ defineProps({
 
                 <div v-if="$page.props.jetstream.canUpdatePassword">
                     <UpdatePasswordForm class="mt-10 sm:mt-0" />
+
+                    <SectionBorder />
+                </div>
+
+                <div>
+                    <GestionCompte class="mt-10 sm:mt-0" />
 
                     <SectionBorder />
                 </div>

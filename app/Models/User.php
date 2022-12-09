@@ -41,6 +41,8 @@ class User extends Authenticatable
         'pays',
         'telephone',
         'contactAnnex',
+        'capital',
+        'soldeInvestissement'
     ];
     
 

@@ -35,6 +35,8 @@ return new class extends Migration
             $table->string('telephone')->nullable();
             $table->string('contactAnnex')->nullable();
             $table->string('status')->default("en attente");
+            $table->float('capital')->default(0);
+            $table->float('soldeInvestissement')->default(0);
 
             $table->timestamps();
         });
